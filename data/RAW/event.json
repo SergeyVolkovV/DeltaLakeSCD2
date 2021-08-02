@@ -1,0 +1,73 @@
+{
+    "pass": [{
+            "type": "load_ods",
+            "source": [{
+                    "connection": "",
+                    "library": "",
+                    "table": "../event.csv",
+                    "alias": "eventstg"
+                }
+            ],
+            "target": [{
+                    "connection": "",
+                    "library": "",
+                    "table": "event",
+                    "alias": "eventraw",
+                    "partition": "current"
+                }
+            ],
+            "mapping_ods": [
+              {
+                    "serial": "1",
+                    "target": "date",
+                    "type": "DateType",
+					"bk": "false",
+                    "source": [{
+                            "serial": 1,
+                            "alias": "",
+                            "column": "date"
+                    }
+                    ]
+                },
+              {
+                    "serial": "2",
+                    "target": "eventId",
+                    "type": "IntegerType",
+                    "bk": "true",
+                    "source": [{
+                            "serial": 1,
+                            "alias": "",
+                            "column": "eventId"
+
+                        }
+                    ]
+                },
+
+                {
+                    "serial": "3",
+                    "target": "eventType",
+                    "type": "StringType",
+					"bk": "false",
+                    "source": [{
+                            "serial": 1,
+                            "alias": "",
+                            "column": "eventType"
+                    }
+                    ]
+                },
+                {
+                    "serial": "4",
+                    "target": "data",
+                    "type": "StringType",
+					"bk": "false",
+                    "source": [{
+                            "serial": 1,
+                            "alias": "",
+                            "column": "data"
+                    }
+                    ]
+                }
+            ]
+        }
+    ]
+}
